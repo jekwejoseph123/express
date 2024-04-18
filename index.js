@@ -6,6 +6,10 @@ const app = express();
 // create a port number
 const port = 9000
 
+const productRoute = require('./routes/productRoute')
+const userRoute = require('./routes/userRoute')
+const serviceRoute = require('./routes/serviceRoute')
+
 
 
 // storing pages in variables
@@ -22,25 +26,36 @@ app.get('/', (request, response) => {
 
 })
 
-app.get('/about', (request, response) => {
-    response.send(aboutPage);
+// app.get('/about', (request, response) => {
+//     response.send(aboutPage);
 
-})
+// })
 
-app.get('/contact', (request, response) => {
-    response.send(contactPage);
+// app.get('/contact', (request, response) => {
+//     response.send(contactPage);
 
-})
+// })
 
-app.get('/product', (request, response) => {
-    response.send(productPage);
+// app.get('/product', (request, response) => {
+//     response.send(productPage);
 
-})
+// })
 
-app.get('/testimonial', (request, response) => {
-    response.send(testimonialPage)
+// app.get('/testimonial', (request, response) => {
+//     response.send(testimonialPage)
 
-})
+// })
+
+// server will now handle json data
+app.use(express.json())
+
+// using product route
+app.use( productRoute);
+app.use(userRoute);
+app.use(serviceRoute);
+
+
+
 
 
 
